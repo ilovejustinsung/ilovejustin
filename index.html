@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study With Me</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://app.matematykagryzie.pl/assets/images/background.png') repeat;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: rgb(1, 9, 22);
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      background-color: rgb(1, 9, 22);
+    }
+    .button-box {
+      background-color: rgba(13, 59, 112, 0.589);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(34, 157, 219, 0.466);
+      width: 90%;
+      max-width: 500px;
+    }
+    .video-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #92bffa80;
+      color: rgb(255, 255, 255);
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .video-btn:hover {
+      background-color: #ffffff;
+    }
+    iframe {
+      margin-top: 20px;
+      width: 100%;
+      height: 360px;
+      border: none;
+      border-radius: 10px;
+    }
+    .info-text {
+      margin-top: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ffffff;
+    }
+    a {
+      color: #89CFF0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="button-box">
+      <button class="video-btn" onclick="loadVideo(1)">3H study with Dr. Justin Sung</button>
+      <button class="video-btn" onclick="loadVideo(2)">2H study with Dr. Justin Sung</button>
+      <button class="video-btn" onclick="loadVideo(3)">The best deep sleep music</button>
+      <button class="video-btn" onclick="loadVideo(4)">Press to not lose access in case of a ban</button>
+      
+      <div id="player-container"></div>
+      <div id="info-container" class="info-text"></div>
+    </div>
+  </div>
+
+  <script>
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    function loadVideo(option) {
+      if (isMobileDevice()) {
+        alert("Videos are very large, please switch to a laptop or desktop computer to watch.");
+        return; // Stop loading video on mobile/tablet
+      }
+
+      let videoUrl = '';
+      let info = '';
+
+      if (option === 1) {
+        videoUrl = 'https://mega.nz/embed/gQpQGTob#9DDzjoojASQxEIwu68bNZaLZ16hMt8qw3fCgBCLpgO4';
+        info = `We do not profit from this, it is just support for students. I created this site after seeing how many people really wanted this video to come back. It was probably taken down from the official channel due to the end of collaboration between Dr. Justin Sung and Brain FM, but we're not sure.<br><br>
+        <strong>Justin Sung Official Channels:</strong><br>
+        <a href='https://www.youtube.com/@JustinSung' target='_blank'>YouTube Channel</a><br>
+        <a href='https://instagram.com/drjustinsung' target='_blank'>Instagram</a><br>
+        <a href='https://resources.icanstudy.com/newsletter-simple?utm_source=youtube&utm_medium=justin&utm_content=channeldescription' target='_blank'>Weekly Newsletter</a><br>
+        I encourage you to subscribe everywhere! 💙📘`;
+      } else if (option === 2) {
+        videoUrl = 'https://mega.nz/embed/UIgyRYgT#4Y-eNBGJnk9CWGni22oCnuQZU6ubU7q7Z9m3vEufZyw';
+        info = `We do not profit from this; it is just support for students. I created this site after seeing how many people really wanted the "3-hour study with me" video, which you can watch above, to come back. Additionally, I added this video here just in case it gets removed in the future. Currently, it is still available and can be watched on Justin's official channel.<br><br>
+        <strong>Justin Sung Official Channels:</strong><br>
+        <a href='https://www.youtube.com/@JustinSung' target='_blank'>YouTube Channel</a><br>
+        <a href='https://instagram.com/drjustinsung' target='_blank'>Instagram</a><br>
+        <a href='https://resources.icanstudy.com/newsletter-simple?utm_source=youtube&utm_medium=justin&utm_content=channeldescription' target='_blank'>Weekly Newsletter</a><br>
+        I encourage you to subscribe everywhere! 💙📘`;
+      } else if (option === 3) {
+        videoUrl = 'https://mega.nz/embed/lFoUxJRS#31HY4dMZoH21CM_EApV5BZtMMIhTsc7P1NrCOwxApnM';
+        info = `This is a clip from the YouTube channel <a href='https://www.youtube.com/@PhiTribe' target='_blank'>Phi Tribe</a>. We do not intend to infringe copyright. I consider this one of the best videos for listening while falling asleep and encourage you to subscribe to the channel.`;
+      } else if (option === 4) {
+        videoUrl = '';
+        info = `In case this page gets banned, join our Telegram group: <a href='https://t.me/+DZZv-jSYmf45ZDlk' target='_blank'>https://t.me/+DZZv-jSYmf45ZDlk</a><br>
+        We'll post updates or you can message us to receive download links.`;
+      }
+
+      if (videoUrl) {
+        document.getElementById('player-container').innerHTML = `<iframe src="${videoUrl}" allowfullscreen allow="autoplay; fullscreen"></iframe>`;
+      } else {
+        document.getElementById('player-container').innerHTML = '';
+      }
+
+      document.getElementById('info-container').innerHTML = info;
+    }
+  </script>
+</body>
+</html>
